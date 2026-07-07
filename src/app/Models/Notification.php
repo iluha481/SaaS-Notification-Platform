@@ -3,8 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\NotificationTemplate;
+use App\Models\NotificationLog;
+use App\Models\NotificationChannel;
 
-class notification extends Model
+
+
+class Notification extends Model
 {
     protected $fillable = [
         'user_id',
@@ -20,14 +26,14 @@ class notification extends Model
     }
 
     public function notification_template(){
-        return $this->belongsTo(notification_template::class, 'template_id');
+        return $this->belongsTo(NotificationTemplate::class, 'template_id');
     }
 
     public function notification_channel(){
-        return $this->belongsTo(Notification_channel::class, 'channel_id');
+        return $this->belongsTo(NotificationChannel::class, 'channel_id');
     }
 
     public function logs(){
-        return $this->hasMany(Notification_log::class);
+        return $this->hasMany(NotificationLog::class);
     }
 }

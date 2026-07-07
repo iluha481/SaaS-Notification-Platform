@@ -2,4 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/users', [App\Http\Controllers\UserController::class, 'index']);
+
+Route::post('/register', [\App\Http\Controllers\UserController::class, 'register']);
+
+// Protected routes
+Route::middleware('api_key')->group(function () {
+
+});

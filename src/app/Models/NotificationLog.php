@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Notification;
 
-class notification_log extends Model
+class NotificationLog extends Model
 {
     protected $fillable = [
         'notification_id',
@@ -14,6 +15,6 @@ class notification_log extends Model
     ];
 
     public function notification(){
-        return $this->belongsTo(notification::class);
+        return $this->belongsTo(Notification::class);
     }
 }

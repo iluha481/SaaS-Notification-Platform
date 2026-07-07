@@ -10,9 +10,12 @@ RUN apk add --no-cache \
     autoconf \
     g++ \
     make \
-    linux-headers
+    linux-headers \ 
+    icu-dev \
+    libzip-dev 
 
-RUN docker-php-ext-install pdo pdo_pgsql sockets
+RUN docker-php-ext-install pdo pdo_pgsql sockets intl zip 
+
 
 RUN pecl install redis \
     && docker-php-ext-enable redis

@@ -15,6 +15,7 @@ services:
       - backend
 
   app:
+    user: "${UID}:${GID}"
     build:
       context: .
       dockerfile: ./docker/php-fpm/Dockerfile
@@ -24,6 +25,7 @@ services:
     volumes:
       - ./src:/var/www/html
     environment:
+      HOME: /tmp
       APP_ENV: local
       APP_DEBUG: true
 
@@ -55,6 +57,8 @@ services:
       - backend
 
   queue-worker:
+    user: "${UID}:${GID}"
+
     build:
       context: .
       dockerfile: ./docker/php-fpm/Dockerfile
@@ -75,6 +79,8 @@ services:
       - backend
 
   scheduler:
+    user: "${UID}:${GID}"
+
     build:
       context: .
       dockerfile: ./docker/php-fpm/Dockerfile

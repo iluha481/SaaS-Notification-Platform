@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\NotificationChannel;
+use App\Models\notification;
 
-class notification_template extends Model
+class NotificationTemplate extends Model
 {
     protected $fillable = [
         'name',
@@ -14,9 +16,9 @@ class notification_template extends Model
     ];
 
     public function notification_channel(){
-        return $this->belongsTo(Notification_channel::class, 'channel_id');
+        return $this->belongsTo(NotificationChannel::class, 'channel_id');
     }
     public function notifications(){
-        return $this->hasMany(notification::class, 'template_id');
+        return $this->hasMany(Notification::class, 'template_id');
     }
 }
